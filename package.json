@@ -1,0 +1,22 @@
+{
+    "name": "@terminal42/contao-xxx",
+    "description": "XXX extension for Contao Open Source CMS",
+    "author": "terminal42 gmbh <info@terminal42.ch>",
+    "license": "MIT",
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "@hotwired/stimulus": "^3.2.1",
+        "tus-js-client": "^4.3.1"
+    },
+    "devDependencies": {
+        "@terminal42/contao-build-tools": "./vendor/terminal42/contao-build-tools/webpack"
+    },
+    "browserslist": [
+        "defaults"
+    ]
+}

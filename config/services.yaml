@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+
+    Terminal42\TusBundle\:
+        resource: ../src/
+
+    terminal42_tus.cache:
+        class: TusPhp\Cache\FileStore
+        arguments:
+            $cacheDir: '%kernel.project_dir%/var/tus_php/'

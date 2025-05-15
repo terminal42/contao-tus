@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "tus": {
+      "css": [
+        "/bundles/terminal42tus/tus.css"
+      ],
+      "js": [
+        "/bundles/terminal42tus/tus.js"
+      ]
+    }
+  }
+}

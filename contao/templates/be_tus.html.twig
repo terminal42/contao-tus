@@ -1,0 +1,23 @@
+<div class="tus" data-controller="tus" data-tus-endpoint-value="{{ endpoint }}">
+    <input class="tus__file invisible" type="file" multiple data-tus-target="file" data-action="change->tus#upload">
+    <input type="hidden" name="{{ name }}[key]" value="{{ key }}">
+    <button type="button" class="tus__button tl_submit" data-action="tus#select">Dateien auswählen</button>
+
+    <ul class="tus__list" data-tus-target="list">
+
+    </ul>
+
+    <template data-tus-target="template">
+        <li class="tus__item">
+            <input type="hidden" name="{{ name }}[files][]" value="">
+            <div class="tus__preview">
+                <img alt="">
+            </div>
+            <div class="tus__name">{name}</div>
+            <div>
+                <div class="tus__progress"></div>
+            </div>
+            <button type="button" class="tus__remove" data-action="tus#remove">X</button>
+        </li>
+    </template>
+</div>
