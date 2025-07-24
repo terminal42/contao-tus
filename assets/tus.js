@@ -7,7 +7,7 @@ const application = Application.start();
 application.debug = process.env.NODE_ENV === 'development';
 
 application.register(
-    'tus',
+    'terminal42--tus',
     class extends Controller {
         static targets = ['file', 'list', 'template'];
         static values = {
@@ -53,7 +53,7 @@ application.register(
 
         _uploadFile(file, el) {
             return new Promise((resolve, reject) => {
-                const progress = el.querySelector('.tus__progress');
+                const progress = el.querySelector('.terminal42--tus__progress');
 
                 // Create a new tus upload
                 const upload = new tus.Upload(file, {
@@ -66,20 +66,17 @@ application.register(
                     onError: function (error) {
                         progress.classList.add('error');
                         progress.innerHTML = error;
-                        console.log('Failed because: ' + error);
                         reject();
                     },
                     onProgress: function (bytesUploaded, bytesTotal) {
                         var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
                         progress.innerHTML = `<div></div><span>${percentage}%</span>`;
                         progress.firstElementChild.style.width = `${percentage}%`;
-                        console.log(bytesUploaded, bytesTotal, percentage + '%');
                     },
                     onSuccess: function () {
                         el.querySelector('input').value = upload.file.name;
                         progress.classList.add('success');
                         progress.innerHTML = '<span>100%</span>';
-                        console.log('Download %s from %s', upload.file.name, upload.url);
                         resolve();
                     },
                 });

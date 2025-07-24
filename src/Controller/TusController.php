@@ -14,8 +14,8 @@ use Symfony\Component\Routing\Attribute\Route;
 use TusPhp\Cache\Cacheable;
 use TusPhp\Tus\Server;
 
-#[Route('/tus/{key}/', name: 'tus_post')]
-#[Route('/tus/{key}/{token?}', name: 'tus', requirements: ['token' => '.+'])]
+#[Route('/_terminal42_tus/{key}/', name: 'terminal42_tus_post')]
+#[Route('/_terminal42_tus/{key}/{token?}', name: 'terminal42_tus', requirements: ['token' => '.+'])]
 class TusController extends AbstractController
 {
     public function __construct(
@@ -34,7 +34,7 @@ class TusController extends AbstractController
         }
 
         $server = new Server($this->cacheAdapter);
-        $server->setApiPath('/tus/'.$key);
+        $server->setApiPath($this->generateUrl('terminal42_tus', ['key' => $key]));
         $server->setUploadDir($uploadDir);
 
         return $server->serve();

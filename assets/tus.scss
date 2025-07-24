@@ -1,4 +1,6 @@
-.tus {
+.terminal42--tus {
+    margin: 5px 0;
+
     &__list {
         margin: 0;
         padding: 0;
@@ -43,6 +45,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 5px 0;
 
         > span {
             position: relative;
@@ -53,17 +56,18 @@
             position: absolute;
             inset: 0 auto 0 0;
             width: 0;
-            background: blue;
+            padding: 5px 0;
+            background: var(--info-bg, rgba(0, 100, 148, .15));
             transition: all 2s;
             z-index: 2;
         }
 
         &.success {
-            background: green;
+            background: var(--confirm-bg, rgba(88, 155, 14, .15));
         }
 
         &.error {
-            background: red;
+            background: (--error-bg, rgba(204, 51, 51, .15));
         }
     }
 
@@ -72,13 +76,12 @@
         top: 0;
         right: 0;
         display: block;
-        width: 15px;
-        height: 15px;
-        font-size: 10px;
-        color: #fff;
-        background: red;
+        padding: 0 5px;
+        font-size: 20px;
+        color: var(--red, #c33);
+        text-align: center;
+        background: transparent;
         border: none;
-        border-radius: 50%;
         cursor: pointer;
     }
 }

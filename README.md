@@ -2,7 +2,7 @@
 # terminal42/contao-tus
 
 `terminal42/contao-tus` is an extension for the [Contao CMS](https://contao.org).
-Adds the tus resumable upload protocol to Contao Open Source CMS
+It adds the [tus resumable upload protocol](https://tus.io) to Contao Open Source CMS
 
 > [!CAUTION]
 > This package is experimental and not ready for use!

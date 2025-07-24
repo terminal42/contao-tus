@@ -1,4 +1,6 @@
 {
-  "tus.css": "/bundles/terminal42tus/tus.css",
-  "tus.js": "/bundles/terminal42tus/tus.js"
+  "tus.css": "/bundles/terminal42tus/tus.1f442cfd.css",
+  "tus.js": "/bundles/terminal42tus/tus.a9877f93.js",
+  "tus.1f442cfd.css.map": "/bundles/terminal42tus/tus.1f442cfd.css.map",
+  "tus.a9877f93.js.map": "/bundles/terminal42tus/tus.a9877f93.js.map"
 }

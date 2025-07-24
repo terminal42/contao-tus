@@ -2,10 +2,10 @@
   "entrypoints": {
     "tus": {
       "css": [
-        "/bundles/terminal42tus/tus.css"
+        "/bundles/terminal42tus/tus.1f442cfd.css"
       ],
       "js": [
-        "/bundles/terminal42tus/tus.js"
+        "/bundles/terminal42tus/tus.a9877f93.js"
       ]
     }
   }

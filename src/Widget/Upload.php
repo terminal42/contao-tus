@@ -35,10 +35,10 @@ class Upload extends Widget implements UploadableWidgetInterface
 
         (new Filesystem())->mkdir(Path::join(System::getContainer()->getParameter('terminal42_tus.upload_dir'), $key));
 
-        return $container->get('twig')->render('@Contao/be_tus.html.twig', [
+        return $container->get('twig')->render('@Contao/backend/terminal42_tus_upload.html.twig', [
             'name' => $this->name,
             'key' => $key,
-            'endpoint' => $container->get('router')->generate('tus_post', ['key' => $key], UrlGeneratorInterface::ABSOLUTE_URL),
+            'endpoint' => $container->get('router')->generate('terminal42_tus_post', ['key' => $key], UrlGeneratorInterface::ABSOLUTE_URL),
         ]);
     }
 
