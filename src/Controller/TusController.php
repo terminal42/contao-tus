@@ -6,6 +6,7 @@ namespace Terminal42\TusBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Path;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +22,7 @@ class TusController extends AbstractController
     public function __construct(
         #[Autowire('@terminal42_tus.cache')] private readonly Cacheable $cacheAdapter,
         private readonly Filesystem $filesystem,
+        private readonly EventDispatcherInterface $eventDispatcher,
         #[Autowire(param: 'terminal42_tus.upload_dir')] private readonly string $uploadDir,
     ) {
     }
@@ -34,6 +36,7 @@ class TusController extends AbstractController
         }
 
         $server = new Server($this->cacheAdapter);
+        $server->setDispatcher($this->eventDispatcher);
         $server->setApiPath($this->generateUrl('terminal42_tus', ['key' => $key]));
         $server->setUploadDir($uploadDir);
 
