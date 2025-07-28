@@ -1,6 +1,5 @@
 <div class="terminal42--tus" data-controller="terminal42--tus" data-terminal42--tus-endpoint-value="{{ endpoint }}">
     <input class="terminal42--tus__file invisible" type="file" multiple data-terminal42--tus-target="file" data-action="change->terminal42--tus#upload">
-    <input type="hidden" name="{{ name }}[key]" value="{{ key }}">
     <button type="button" class="terminal42--tus__button tl_submit" data-action="terminal42--tus#select">Dateien auswählen</button>
 
     <ul class="terminal42--tus__list" data-terminal42--tus-target="list"></ul>
