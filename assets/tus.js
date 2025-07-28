@@ -10,17 +10,10 @@ application.register(
     'terminal42--tus',
     class extends Controller {
         static targets = ['file', 'list', 'template'];
+
         static values = {
             endpoint: String,
         };
-
-        connect() {
-            // do something
-        }
-
-        disconnect() {
-            // do something
-        }
 
         select() {
             this.fileTarget.click();
@@ -28,11 +21,11 @@ application.register(
 
         upload(event) {
             [...event.target.files].forEach((file) => {
-                this._uploadFile(file, this._createItem(file.name));
+                this.#uploadFile(file, this.#createItem(file.name));
             });
         }
 
-        remove(event) {
+        static remove(event) {
             const el = event.target.parentNode;
 
             if (el.tus) {
@@ -42,7 +35,7 @@ application.register(
             el.remove();
         }
 
-        _createItem(name) {
+        #createItem(name) {
             let template = this.templateTarget.innerHTML;
             template = template.replace('{name}', name);
 
@@ -51,7 +44,7 @@ application.register(
             return this.listTarget.lastElementChild;
         }
 
-        _uploadFile(file, el) {
+        #uploadFile(file, el) {
             return new Promise((resolve, reject) => {
                 const progress = el.querySelector('.terminal42--tus__progress');
 
@@ -63,17 +56,17 @@ application.register(
                         filename: file.name,
                         filetype: file.type,
                     },
-                    onError: function (error) {
+                    onError(error) {
                         progress.classList.add('error');
                         progress.innerHTML = error;
                         reject();
                     },
-                    onProgress: function (bytesUploaded, bytesTotal) {
-                        var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+                    onProgress(bytesUploaded, bytesTotal) {
+                        const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
                         progress.innerHTML = `<div></div><span>${percentage}%</span>`;
                         progress.firstElementChild.style.width = `${percentage}%`;
                     },
-                    onSuccess: function () {
+                    onSuccess() {
                         el.querySelector('input').value = upload.file.name;
                         progress.classList.add('success');
                         progress.innerHTML = '<span>100%</span>';
@@ -86,7 +79,7 @@ application.register(
                 URL.revokeObjectURL(imageUrl);
 
                 // Check if there are any previous uploads to continue.
-                upload.findPreviousUploads().then(function (previousUploads) {
+                upload.findPreviousUploads().then((previousUploads) => {
                     // Found previous uploads so we select the first one.
                     if (previousUploads.length) {
                         upload.resumeFromPreviousUpload(previousUploads[0]);
